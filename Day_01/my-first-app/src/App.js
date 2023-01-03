@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Header from "./component/Header";
 
 function App() {
   // let random = fetch("")
@@ -8,6 +9,7 @@ function App() {
   function clickHandler() {
     console.log("clicked");
   }
+
   //
   const name = "Nomin";
   const title = <h1>Welcome {name}</h1>;
@@ -46,14 +48,15 @@ function App() {
   };
   return (
     <div className="App">
-      <header className="App-header">
+      <Header />
+      <div className="App-header">
         {welcome()}
         {title}
         {greeting(name)}
         {greenName(nameCust)}
         {<p style={ternaryStyle}>Hello {custName}</p>}
         <button onClick={clickHandler}>Click</button>
-      </header>
+      </div>
     </div>
   );
 }
