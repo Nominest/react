@@ -83,64 +83,52 @@ import { useState } from "react";
 //calculator
 function App() {
   let [count, setCount] = useState("");
-  let item1;
-  let item2;
-  const changeToOne = () => {
-    setCount(1);
-  };
-  const changeToTwo = () => {
-    setCount(2);
-  };
-  const changeToThree = () => {
-    setCount(3);
-  };
-  const changeToFour = () => {
-    setCount(4);
-  };
-  const changeToFive = () => {
-    setCount(5);
-  };
-  const changeToSix = () => {
-    setCount(6);
-  };
-  const changeToSeven = () => {
-    setCount(7);
-  };
-  const changeToEight = () => {
-    setCount(8);
-  };
-  const changeToNine = () => {
-    setCount(9);
-  };
-  const changeToZero = () => {
-    setCount(0);
-  };
-  const Add = () => {
-    let sum;
-    sum = item1 + item2;
+
+  const onClickHandler = (e) => {
+    let btnValue;
+    btnValue = e.target.innerText;
+    if (
+      ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(btnValue)
+    ) {
+      setCount(count + btnValue);
+    } else if (btnValue === "C" && count !== "") {
+      let tempResult = count.toString().slice(0, -1);
+      setCount(tempResult);
+    } else if (["/", "*", "+", "-"].includes(btnValue) && count !== "") {
+      setCount(count + btnValue);
+    } else if (btnValue === "=") {
+      let tempres = eval(count);
+      setCount(tempres);
+    } else if (btnValue === "AC") {
+      setCount("");
+    }
   };
 
   const inputChange = (e) => {
-    item1 = e.target.value;
-    item2 = e.target.value;
+    let btnValue;
+    btnValue = e.target.innerText;
   };
-  const equal = () => {};
-  console.log(count);
+
   return (
     <div className="App">
       <input value={count} onChange={inputChange} />
-      <button onClick={changeToOne}>1</button>
-      <button onClick={changeToTwo}>2</button>
-      <button onClick={changeToThree}>3</button>
-      <button onClick={changeToFour}>4</button>
-      <button onClick={changeToFive}>5</button>
-      <button onClick={changeToSix}>6</button>
-      <button onClick={changeToSeven}>7</button>
-      <button onClick={changeToEight}>8</button>
-      <button onClick={changeToNine}>9</button>
-      <button onClick={changeToZero}>0</button>
-      <button onClick={Add}>+</button>
-      <button onClick={equal}>=</button>
+      <button onClick={onClickHandler}>1</button>
+      <button onClick={onClickHandler}>2</button>
+      <button onClick={onClickHandler}>3</button>
+      <button onClick={onClickHandler}>4</button>
+      <button onClick={onClickHandler}>5</button>
+      <button onClick={onClickHandler}>6</button>
+      <button onClick={onClickHandler}>7</button>
+      <button onClick={onClickHandler}>8</button>
+      <button onClick={onClickHandler}>9</button>
+      <button onClick={onClickHandler}>+</button>
+      <button onClick={onClickHandler}>0</button>
+      <button onClick={onClickHandler}>-</button>
+      <button onClick={onClickHandler}>*</button>
+      <button onClick={onClickHandler}>/</button>
+      <button onClick={onClickHandler}>=</button>
+      <button onClick={onClickHandler}>C</button>
+      <button onClick={onClickHandler}>AC</button>
     </div>
   );
 }
