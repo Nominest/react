@@ -28,7 +28,7 @@ function App() {
   function loginHandler(userName, password) {
     console.log("username:", userName);
     console.log("password:", password);
-    if (userName === "nomin" && password === "nnnn") {
+    if (userName == data.userName && password == data.password) {
       setIsLoggedIn(true);
     } else {
       console.error("wrong username or password");
